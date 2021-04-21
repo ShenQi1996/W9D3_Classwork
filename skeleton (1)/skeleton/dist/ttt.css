@@ -1,19 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
 .board {
   display: flex;
   flex-wrap: wrap;
-  width: 650px;
-  height: 605px;
+  width: 630px;
+  height: 630px;
   margin: auto;
   /* justify-content: center;
   align-items: center; */
+  border: 5px solid black;
 }
 
 .board > li {
-  border: 1px solid #000;
+  border: 5px solid #000;
   height: 200px;
   width: 200px;
   list-style-type: none;
-   background-color: gray;
+  background-color: gray;
 }
 .board > li.not-selected:hover {
   background-color: yellow;
@@ -21,4 +31,29 @@
 
 li.selected {
   background-color: white;
+}
+
+li > div {
+  text-align: center;
+  font-size: 200px;
+  width: inherit;
+  height: inherit;
+  line-height: 160px;
+}
+
+li.loser {
+  color: red;
+}
+
+.message {
+  text-align: center;
+  text-decoration: underline;
+}
+li.gameover {
+  background-color: #fff;
+}
+
+li.winner {
+  background-color: rgb(114, 201, 27);
+  color: white;
 }

@@ -7,17 +7,21 @@ class View {
 
   bindEvents() {
     let that = this;
-    $(".board").on('click', 'li.not-selected', function(e) {
-      const $square=$(e.target);
+    $(".board").on("click", "li.not-selected", function (e) {
+      const $square = $(e.target);
       that.makeMove($square);
     });
 
+    $(".board").on("click", "li.selected", function (e) {
+      alert("invalid moves please select another square");
+    });
   }
 
   makeMove($square) {
-    $square.toggleClass('selected not-selected');
-    $square.append(this.game.currentPlayer);
-    const pos = $square.attr('id').split('');
+    $square.toggleClass("selected not-selected");
+    $square.append(`<div> ${this.game.currentPlayer} </div>`);
+    console.log($square.data("pos"));
+    const pos = $square.attr("id").split("");
     this.game.playMove(pos);
   }
 
