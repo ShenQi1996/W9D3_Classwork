@@ -5,22 +5,34 @@ class View {
     this.setupBoard();
   }
 
-  bindEvents() {}
+  bindEvents() {
+    let that = this;
+    $(".board").on('click', 'li.not-selected', function(e) {
+      const $square=$(e.target);
+      that.makeMove($square);
+    });
 
-  makeMove($square) {}
+  }
+
+  makeMove($square) {
+    $square.toggleClass('selected not-selected');
+    $square.append(this.game.currentPlayer);
+    const pos = $square.attr('id').split('');
+    this.game.playMove(pos);
+  }
 
   setupBoard() {
     var html =
       '<ul class = "board">' +
-      "<li> </li>" +
-      "<li> </li>" +
-      "<li> </li>" +
-      "<li> </li>" +
-      "<li> </li>" +
-      "<li> </li>" +
-      "<li> </li>" +
-      "<li> </li>" +
-      "<li> </li>" +
+      "<li class=not-selected id=00> </li>" +
+      "<li class=not-selected id=01> </li>" +
+      "<li class=not-selected id=02> </li>" +
+      "<li class=not-selected id=10> </li>" +
+      "<li class=not-selected id=11> </li>" +
+      "<li class=not-selected id=12> </li>" +
+      "<li class=not-selected id=20> </li>" +
+      "<li class=not-selected id=21> </li>" +
+      "<li class=not-selected id=22> </li>" +
       "</ul>";
     $(document.body).append(html);
   }

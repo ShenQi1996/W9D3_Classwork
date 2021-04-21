@@ -4,14 +4,21 @@
   width: 650px;
   height: 605px;
   margin: auto;
+  /* justify-content: center;
+  align-items: center; */
 }
 
 .board > li {
   border: 1px solid #000;
-  background-color: gray;
   height: 200px;
   width: 200px;
+  list-style-type: none;
+   background-color: gray;
 }
-.board > li:hover {
+.board > li.not-selected:hover {
   background-color: yellow;
+}
+
+li.selected {
+  background-color: white;
 }

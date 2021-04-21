@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\");\nconst Game = __webpack_require__(/*! ../../../solution/game */ \"../../solution/game.js\");\n\n$(() => {\n  // Your code here\n\n  const game = new Game();\n  let $cont = $(\".ttt\");\n  const view = new View(game, $cont);\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\");\nconst Game = __webpack_require__(/*! ../../../solution/game */ \"../../solution/game.js\");\n\n$(() => {\n  // Your code here\n\n  const game = new Game();\n  let $cont = $(\".ttt\");\n  const view = new View(game, $cont);\n  view.bindEvents();\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\");
   \*************************/
 /***/ ((module) => {
 
-eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el;\n    this.setupBoard();\n  }\n\n  bindEvents() {}\n\n  makeMove($square) {}\n\n  setupBoard() {\n    var html =\n      '<ul class = \"board\">' +\n      \"<li> </li>\" +\n      \"<li> </li>\" +\n      \"<li> </li>\" +\n      \"<li> </li>\" +\n      \"<li> </li>\" +\n      \"<li> </li>\" +\n      \"<li> </li>\" +\n      \"<li> </li>\" +\n      \"<li> </li>\" +\n      \"</ul>\";\n    $(document.body).append(html);\n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el;\n    this.setupBoard();\n  }\n\n  bindEvents() {\n    let that = this;\n    $(\".board\").on('click', 'li.not-selected', function(e) {\n      const $square=$(e.target);\n      that.makeMove($square);\n    });\n\n  }\n\n  makeMove($square) {\n    $square.toggleClass('selected not-selected');\n    $square.append(this.game.currentPlayer);\n    const pos = $square.attr('id').split('');\n    this.game.playMove(pos);\n  }\n\n  setupBoard() {\n    var html =\n      '<ul class = \"board\">' +\n      \"<li class=not-selected id=00> </li>\" +\n      \"<li class=not-selected id=01> </li>\" +\n      \"<li class=not-selected id=02> </li>\" +\n      \"<li class=not-selected id=10> </li>\" +\n      \"<li class=not-selected id=11> </li>\" +\n      \"<li class=not-selected id=12> </li>\" +\n      \"<li class=not-selected id=20> </li>\" +\n      \"<li class=not-selected id=21> </li>\" +\n      \"<li class=not-selected id=22> </li>\" +\n      \"</ul>\";\n    $(document.body).append(html);\n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ }),
 

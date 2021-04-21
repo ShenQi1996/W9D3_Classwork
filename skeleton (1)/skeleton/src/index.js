@@ -7,4 +7,5 @@ $(() => {
   const game = new Game();
   let $cont = $(".ttt");
   const view = new View(game, $cont);
+  view.bindEvents();
 });
