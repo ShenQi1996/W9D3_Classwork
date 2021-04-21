@@ -1,0 +1,17 @@
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  width: 650px;
+  height: 605px;
+  margin: auto;
+}
+
+.board > li {
+  border: 1px solid #000;
+  background-color: gray;
+  height: 200px;
+  width: 200px;
+}
+.board > li:hover {
+  background-color: yellow;
+}
